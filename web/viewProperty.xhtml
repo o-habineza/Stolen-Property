@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>List of Property</title>
+    </h:head>
+    <h:body>
+        <h:link outcome="pCrtProperty" value="Create a new Property">
+            <f:param name="productId" value="10"/>
+        </h:link>
+        <h:form>
+            <h:dataTable var="prptz" value="#{prptsContrl.prptz}">
+                
+                <h:column>
+                     <f:facet name="header">category ID:</f:facet>
+                     #{prptz.categoryID}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Description:</f:facet>
+                    #{prptz.propertyDescription}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">property ID:</f:facet>
+                     #{prptz.propertyID}
+                </h:column>
+
+                <h:column>
+                     <f:facet name="header">Item:</f:facet>
+                     #{prptz.propertyName}
+                </h:column>
+                <h:column >
+                     <f:facet name="header">Picture:</f:facet>
+                    <h:graphicImage height="50"  width="50" value="DisplayImage?Image_id=#{prptz.propertyID}">
+                        <f:param name="pid" value="#{prptz.propertyID}" />
+                    </h:graphicImage>
+                </h:column>
+                <h:column>
+                     <f:facet name="header">Record Date:</f:facet>
+                    #{prptz.propertyRecordedDate}
+                </h:column>
+                <h:column>
+                     <f:facet name="header">Actions:</f:facet>
+                    <h:commandLink value="Remove"
+                                   action="#{prptsContrl.remove(prptz)}" 
+                                   onclick="return confirm('Are you sure')">                                
+                                    
+                    </h:commandLink>
+                &nbsp;&nbsp;
+                    <h:commandLink value="Edit"
+                                     action="#{prptsContrl.edit(prptz)}"/>   
+
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

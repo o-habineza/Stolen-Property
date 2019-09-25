@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Home Page</title>
+    </h:head>
+    <h:body>
+        <h:form>  
+            <p:growl id="messages"/>
+
+            <p:menubar>       
+                <f:facet name="options">
+                    <p:commandButton value="All" action="#{prptsContrl.allProperties()}" />
+
+                    <p:commandButton value="Electronics" action="#{prptsContrl.electronics()}" />
+
+                    <p:commandButton value="Furnitures" action="#{prptsContrl.furnitures()}"/>
+
+                    <p:commandButton value="Vehicles" action="#{prptsContrl.vehicles()}" />
+
+                    <p:commandButton value="Others" action="#{prptsContrl.others()}" />
+
+                    <p:commandButton  value="Report missing property" action="#{usrContrl.redirect()}" icon="ui-icon-extlink"/>
+
+                    <p:commandButton  value="Login" action="log" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+        <h:form id="form" >
+            <p:layout style="min-width:400px;min-height:400px;">
+                <p:layoutUnit position="west" size="200" minSize="40" maxSize="200">
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+<!--                   <p:imageSwitch id="simple" effect="fade">
+                        <p:graphicImage   value="/resources/slideshow/1.jpg" />
+                        <p:graphicImage  value="/resources/slideshow/2.jpg" />
+                        <p:graphicImage  value="/resources/slideshow/3.jpg" />
+                        <p:graphicImage  value="/resources/slideshow/4.jpg" />
+                        <p:graphicImage  value="/resources/slideshow/5.jpg" />
+                    </p:imageSwitch>-->
+                </p:layoutUnit>
+                <p:layoutUnit position="east" size="200">
+                    
+                </p:layoutUnit>
+
+            </p:layout>
+            <p:dataGrid var="item" value="#{prptsContrl.prptz}" columns="4" rows="4" paginator="true" id="properties" 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="4,8,12">
+
+                <f:facet name="header">
+                    Stolen Properties
+                </f:facet>
+
+                <p:panel header="#{item.propertyName}" style="text-align:center">
+                    <p:panelGrid columns="1" style="width:100%">
+
+                        <p:graphicImage value="DisplayImage?Image_id=#{item.propertyID}" width="250" height="250" />
+                        <h:outputText value="#{item.propertyID}"/>
+
+                        <p:commandLink  update=":form:itemDetail" oncomplete="PF('itemDialog').show()" title="View Detail">
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="#{item}" target="#{prptsContrl.prpts}" />
+                        </p:commandLink>
+                    </p:panelGrid>                       
+                </p:panel>
+
+            </p:dataGrid>
+            <p:dialog header="Stolen Properties Info" widgetVar="itemDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="itemDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty prptsContrl.prpts}" columnClasses="label,value">
+                        <f:facet name="header">                                        
+                            <p:graphicImage value="DisplayImage?Image_id=#{prptsContrl.prpts.propertyID}" width="250" height="250"/> 
+                            <f:param name="pid" value="#{prptsContrl.prpts.propertyID}"/>
+                        </f:facet>
+
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyID}" />
+
+                        <h:outputText value="Name:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyName}" />
+
+                        <h:outputText value="Description:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyDescription}" />
+
+                        <h:outputText value="Recorded Date:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyRecordedDate}" />
+
+                    </p:panelGrid>
+                    <p:commandButton value="Claim Ownership"  action="#{prptsContrl.callClaimForm()}" icon="ui-icon-extlink"/>
+                </p:outputPanel>
+
+            </p:dialog>
+
+        </h:form>
+
+    </h:body>
+</html>
+

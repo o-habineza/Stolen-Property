@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        
+        <from-view-id>*</from-view-id>
+        
+        <navigation-case>
+            <from-outcome>log</from-outcome>
+            <to-view-id>/Page_login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>pReportProperty</from-outcome>
+            <to-view-id>/Page_reportProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>        
+      
+        <navigation-case>
+            <from-outcome>crtUser</from-outcome>
+            <to-view-id>/createUser.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>    
+            
+        <navigation-case>
+            <from-outcome>claim</from-outcome>
+            <to-view-id>/claimingForm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>   
+          
+        <navigation-case>
+            <from-outcome>pClaim</from-outcome>
+            <to-view-id>/Page_claimingForm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>     
+        
+        <navigation-case>
+            <from-outcome>crtProperty</from-outcome>
+            <to-view-id>/createProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+            
+        <navigation-case>
+            <from-outcome>pCrtProperty</from-outcome>
+            <to-view-id>/Page_createProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>     
+        
+        <navigation-case>
+            <from-outcome>vProperty</from-outcome>
+            <to-view-id>/viewProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+            
+        <navigation-case>
+            <from-outcome>vPropertyTemp</from-outcome>
+            <to-view-id>/Page_viewProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+           
+        <navigation-case>
+            <from-outcome>editPropertyTemp</from-outcome>
+            <to-view-id>/Page_editProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>  
+          
+        <navigation-case>
+            <from-outcome>vREpProperty</from-outcome>
+            <to-view-id>/viewReported.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+           
+        <navigation-case>
+            <from-outcome>editREpProperty</from-outcome>
+            <to-view-id>/editReportedProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>  
+          
+        <navigation-case>
+            <from-outcome>cCategoryTemp</from-outcome>
+            <to-view-id>/Page_createCategory.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+           
+        <navigation-case>
+            <from-outcome>vCategoryTemp</from-outcome>
+            <to-view-id>/Page_viewCategory.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>   
+         
+        <navigation-case>
+            <from-outcome>editCategoryTemp</from-outcome>
+            <to-view-id>/Page_editCategory.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>    
+         
+        <navigation-case>
+            <from-outcome>map</from-outcome>
+            <to-view-id>/menuAdminProperties.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>    
+         
+        <navigation-case>
+            <from-outcome>vClaims</from-outcome>
+            <to-view-id>/viewClaims.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>vReported</from-outcome>
+            <to-view-id>/reportProperty.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+            
+        <navigation-case>
+            <from-outcome>adMenu</from-outcome>
+            <to-view-id>/adminMenu.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+          
+        <navigation-case>
+            <from-outcome>padMenu</from-outcome>
+            <to-view-id>/dashboard_admin.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>   
+          
+        <navigation-case>
+            <from-outcome>vReviews</from-outcome>
+            <to-view-id>/viewReview.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>  
+          
+        <navigation-case>
+            <from-outcome>vReviewsTemp</from-outcome>
+            <to-view-id>/Page_viewReviews.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>  
+          
+        <navigation-case>
+            <from-outcome>vUsers</from-outcome>
+            <to-view-id>/viewUser.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>  
+          
+        <navigation-case>
+            <from-outcome>editUsersTemp</from-outcome>
+            <to-view-id>/Page_editUser.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>  
+          
+        <navigation-case>
+            <from-outcome>vUsersTemp</from-outcome>
+            <to-view-id>/Page_viewUsers.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>    
+        
+        <navigation-case>
+            <from-outcome>reportProperty</from-outcome>
+            <to-view-id>/msgRequestForm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>pMsgReportProperty</from-outcome>
+            <to-view-id>/Page_msgReportedForm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>msgCreateuserForm</from-outcome>
+            <to-view-id>/msgCreateuserForm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>pMsgCrtUsrFormTemp</from-outcome>
+            <to-view-id>/Page_msgCreateuserForm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>msgClaimingForm</from-outcome>
+            <to-view-id>/msgClaimingForm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>pMsgClaimingForm</from-outcome>
+            <to-view-id>/Page_msgClaimingForm.xhtml</to-view-id>                         
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>pMsgNoActionChoosen</from-outcome>
+            <to-view-id>/Page_msgNoActionChoosen.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>homePage</from-outcome>
+            <to-view-id>/homePage.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case> 
+        
+        <navigation-case>
+            <from-outcome>changePasswd</from-outcome>
+            <to-view-id>/changePassword.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>     
+           
+        <navigation-case>
+            <from-outcome>pCreateUserTemp</from-outcome>
+            <to-view-id>/Page_createUser.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>  
+              
+    </navigation-rule>
+</faces-config>

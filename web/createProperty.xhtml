@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >  
+
+    <h:head>
+        <title>Properties</title>
+    </h:head>
+    <h:body>
+<!--        <h:form>  
+            <p:growl id="messages"/>
+
+            <p:menubar>
+                <p:submenu label="File" icon="ui-icon-document">
+                    <p:submenu label="New" icon="ui-icon-contact">
+                        <p:menuitem value="Project" url="#" />
+                        <p:menuitem value="Other" url="#" />
+                    </p:submenu>
+                    <p:menuitem value="Open" url="#" />
+                    <p:separator />
+                    <p:menuitem value="Quit" url="#" />
+                </p:submenu>
+
+                <p:submenu label="Edit" icon="ui-icon-pencil">
+                    <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+                    <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" />
+                </p:submenu>
+
+                <p:submenu label="Help" icon="ui-icon-help">
+                    <p:menuitem value="Contents" url="#" />
+                    <p:submenu label="Search" icon="ui-icon-search">
+                        <p:submenu label="Text">
+                            <p:menuitem value="Workspace" url="#" />
+                        </p:submenu>
+                        <p:menuitem value="File" url="#" />
+                    </p:submenu>
+                </p:submenu>
+
+                <p:submenu label="Actions" icon="ui-icon-gear">
+                    <p:submenu label="Ajax" icon="ui-icon-refresh">
+                        <p:menuitem value="Save" actionListener="#{menuView.savem}" icon="ui-icon-disk" update="messages"/>
+                        <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
+                    </p:submenu>
+                    <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
+                        <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
+                    </p:submenu>
+                </p:submenu>
+
+                <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
+
+                <f:facet name="options">
+                    <p:inputText style="margin-right:10px" placeholder="Search"/>
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                </f:facet>
+            </p:menubar>
+        </h:form>
+
+        <h:form id="form" >
+            <p:layout style="min-width:400px;min-height:400px;">
+                <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200">
+                    
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    
+                </p:layoutUnit>
+                <p:layoutUnit position="east" size="200">
+                    E
+                </p:layoutUnit>
+                
+            </p:layout>
+            <p:dataGrid var="item" value="#{prptsContrl.prptz}" columns="4" rows="2" paginator="true" id="properties" 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="3,6,8">
+                <p:column>
+                    <p:panel header="#{item.propertyName}" style="text-align:center">
+                        <p:panelGrid columns="1" style="width:100%">
+                            <p:graphicImage value="#{item.propertyPicture}" width="250" height="250" />
+                            <p:graphicImage value="DisplayImage?Image_id=#{item.propertyID}" width="250" height="250" />
+                            <h:outputText value="#{item.propertyID}"/>
+
+                            <p:commandLink  update=":form:itemDetail" oncomplete="PF('itemDialog').show()" title="View Detail">
+                                <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                <f:setPropertyActionListener value="#{item}" target="#{prptsContrl.prpts}" />
+                            </p:commandLink>
+                        </p:panelGrid>                       
+                    </p:panel>
+                </p:column>                
+            </p:dataGrid>
+            <p:dialog header="Stolen Properties Info" widgetVar="itemDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="itemDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty prptsContrl.prpts}" columnClasses="label,value">
+                        <f:facet name="header">                                        
+                            <p:graphicImage value="DisplayImage?Image_id=#{prptsContrl.prpts.propertyID}" width="250" height="250"/> 
+                            <f:param name="pid" value="#{prptsContrl.prpts.propertyID}"/>
+                        </f:facet>
+
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyID}" />
+
+                        <h:outputText value="Name:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyName}" />
+
+                        <h:outputText value="Description:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyDescription}" />
+
+                        <h:outputText value="Recorded Date:" />
+                        <h:outputText value="#{prptsContrl.prpts.propertyRecordedDate}" />
+
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>-->
+        <h:form enctype="multipart/form-data">
+            <p:growl id="growl" showDetail="true" life="3000"/>
+            <table>   
+                <tr>
+                    <td> <h:outputLabel value="Item:"/> </td>
+                    <td> <h:inputText value="#{prptsContrl.prpts.propertyName}" /> </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Description:"/></td>
+                    <td> <h:inputTextarea value="#{prptsContrl.prpts.propertyDescription}" rows="6" cols="33"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Categories:"/></td>
+                    <td> <h:selectOneMenu value="#{prptsContrl.prpts.categoryID}">
+                            <f:selectItem itemValue="unselected" itemLabel="Select a Category"/>                
+                            <f:selectItems value="#{catContrl.categoryDescription}" var="cat" itemValue="#{cat.categoryID}" itemLabel="#{cat.categoryDescription}"/>                          
+                        </h:selectOneMenu></td>
+                </tr>
+                <tr>                   
+                    <!--<td>  <p:messages showDetail="true"/> </td>--> <td> </td>
+                    <td><p:panelGrid columns="2">                            
+                            <p:fileUpload value="#{prptsContrl.file}" mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/> 
+                        </p:panelGrid>                                          
+                    </td>
+                </tr>
+                <tr><td> <input type="hidden" value="Seized" name="propertyStatus"/> </td></tr>
+                <tr>
+                    <!--<td><f:facet name="footer">--> <td> </td>
+                    <td>   <p:commandButton value="Create Property" ajax="false" action="#{prptsContrl.insert()}" update="growl"/></td>
+                    <!--</f:facet></td>-->                   
+                </tr>
+            </table>
+        </h:form> 
+    </h:body>
+</html>
+

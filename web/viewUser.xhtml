@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>List of Users</title>
+    </h:head>
+    <h:body>
+        <h:link outcome="createUser" value="Create a new Account"/>
+        <h:form>
+            <h:dataTable value="#{usrContrl.usr}" var="usr">
+                <h:column>
+                    <f:facet name="header">First Name:</f:facet>
+                    #{usr.firstName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name:</f:facet>
+                    #{usr.lastName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Address:</f:facet>
+                    #{usr.address}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email:</f:facet>
+                    #{usr.email}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Phone Number:</f:facet>
+                    #{usr.phoneNumber}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Username:</f:facet>
+                    #{usr.username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Password:</f:facet>
+                    #{usr.password}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Role:</f:facet>
+                    #{usr.userRole}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Registration Date:</f:facet>
+                    #{usr.creationDate}
+                </h:column>
+           
+                 <h:column> 
+                     <f:facet name="header">Actions:</f:facet>
+
+                    <h:commandLink value="Remove"
+                                   action="#{usrContrl.remove(usr)}"                                    
+                                   onclick="return confirm('Are you sure')">                                                                               
+                    </h:commandLink>               
+
+                    &nbsp;&nbsp;
+                    <h:commandLink value="Edit"
+                                   action="#{usrContrl.edit(usr)}"/>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

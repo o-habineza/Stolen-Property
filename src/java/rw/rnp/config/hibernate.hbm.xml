@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <class name="rw.rnp.entity.Users" catalog="stolenproperty" table="users">
+        <id name="userID" type="java.lang.Integer" column="UserID">
+            <generator class="identity"/>
+        </id>
+        <property name="firstName" type="string" column="firstName"/>
+        <property name="lastName" type="string" column="lastName"/>
+        <property name="phoneNumber" type="string" column="phoneNumber"/>
+        
+        <property name="email" type="string" column="email"/>
+        <property name="address" type="java.lang.Integer" column="address"/>
+        <property name="creationDate" type="date" column="creationDate"/>
+        
+        <property name="username" type="string" column="username"/>
+        <property name="password" type="string" column="password"/>
+        <property name="userRole" type="string" column="userRole"/>        
+    </class>
+    
+    
+    <class name="rw.rnp.entity.Provinces" catalog="stolenproperty" table="provinces">
+        <id name="provinceID" type="java.lang.Integer" column="provinceID">
+            <generator class="identity"/>
+        </id>
+        <property name="provinceName" type="string" column="provinceName"/>        
+    </class>
+    
+    
+    <class name="rw.rnp.entity.Categories" catalog="stolenproperty" table="categories">
+        <id name="categoryID" type="java.lang.Integer" column="categoryID">
+            <generator class="identity"/>
+        </id>
+        <property name="categoryDescription" type="string" column="categoryDescription"/>        
+    </class>
+    
+    
+    <class name="rw.rnp.entity.Districts" catalog="stolenproperty" table="districts">
+        <id name="districtID" type="java.lang.Integer" column="districtID">
+            <generator class="identity"/>
+        </id>
+        <property name="districtName" type="string" column="districtName"/>        
+        <property name="provinceID" type="java.lang.Integer" column="provinceID"/>        
+    </class>
+    
+    
+    <class name="rw.rnp.entity.Sectors" catalog="stolenproperty" table="sectors">
+        <id name="sectorID" type="java.lang.Integer" column="sectorID">
+            <generator class="identity"/>
+        </id>
+        <property name="sectorName" type="string" column="sectorName"/>        
+        <property name="districtID" type="java.lang.Integer" column="districtID"/>        
+    </class>
+    
+    
+    <class name="rw.rnp.entity.Properties" catalog="stolenproperty" table="properties">
+        <id name="propertyID" type="java.lang.Integer" column="propertyID">
+            <generator class="identity"/>
+        </id>
+        <property name="propertyName" type="string" column="propertyName"/>        
+        <property name="propertyDescription" type="string" column="propertyDescription"/> 
+        <property name="propertyPicture" type="byte[]" column="propertyPicture"/> 
+        <property name="propertyRecordedDate" type="date" column="propertyRecordedDate"/> 
+        <property name="propertyStatus" type="string" column="propertyStatus"/> 
+        <property name="categoryID" type="java.lang.Integer" column="categoryID"/>               
+        <property name="userID" type="java.lang.Integer" column="userID"/>               
+        <property name="sectorID" type="java.lang.Integer" column="sectorID"/>               
+    </class>
+    
+    
+    <class name="rw.rnp.entity.Identifies" catalog="stolenproperty" table="identifies">
+        <id name="identificationID" type="java.lang.Integer" column="identificationID">
+            <generator class="identity"/>
+        </id>
+        <property name="description" type="string" column="description"/>        
+        <property name="userID" type="java.lang.Integer" column="userID"/>        
+        <property name="propertyID" type="java.lang.Integer" column="propertyID"/>        
+    </class>
+    
+    
+    <class name="rw.rnp.entity.Reviews" catalog="stolenproperty" table="reviews">
+        <id name="reviewID" type="java.lang.Integer" column="reviewID">
+            <generator class="identity"/>
+        </id>
+        <property name="reviewDate" type="date" column="reviewDate"/>        
+        <property name="reviewStatus" type="string" column="reviewStatus"/>        
+        <property name="userID" type="java.lang.Integer" column="userID"/>        
+        <property name="identificationID" type="java.lang.Integer" column="identificationID"/>        
+    </class>
+    
+</hibernate-mapping>

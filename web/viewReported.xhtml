@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>List of Property</title>
+    </h:head>
+    <h:body>
+        <p:link outcome="createProperty" value="Create a new Property">
+            <f:param name="productId" value="10"/>
+        </p:link>
+        <h:form>
+            <h:dataTable var="reprptz" value="#{prptsContrl.reprptz}">
+                <h:column>
+                    <f:facet name="header">category ID:</f:facet>
+                    #{reprptz.categoryID}"
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Description:</f:facet>
+                    #{reprptz.propertyDescription}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">property ID:</f:facet>
+                    #{reprptz.propertyID}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Item:</f:facet>
+                    #{reprptz.propertyName}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Record Date:</f:facet>
+                    #{reprptz.propertyRecordedDate}
+                </h:column>
+                <h:column> 
+                     <f:facet name="header">Actions:</f:facet>
+                    <h:commandLink value="Remove"
+                                   action="#{prptsContrl.removeReported(reprptz)}"                                    
+                                     onclick="return confirm('Are you sure')">
+                    </h:commandLink>
+                    &nbsp;&nbsp;
+                    <h:commandLink value="Edit"
+                                   action="#{prptsContrl.editReported(reprptz)}"/>   
+
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

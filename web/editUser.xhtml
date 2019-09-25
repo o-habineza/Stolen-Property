@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Modify Account</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <table>
+                <tr>
+                    <td> <h:outputLabel value="First Name:"/> </td>
+                    <td> <h:inputText id="fstname" value="#{usrContrl.users.firstName}" 
+                                      required="true"
+                                      requiredMessage="First Name is required"/>
+                    <h:message for="fstname" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Last Name:"/></td>
+                    <td> <h:inputText id="lstname" value="#{usrContrl.users.lastName}"
+                                      required="true"
+                                      requiredMessage="Last Name is required"/>
+                    <h:message for="lstname" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Address: "/></td>
+                    <td> <h:selectOneMenu id="province_selection" value="#{distContrl.subProvinceId}"
+                                          required="true"
+                                          requiredMessage="Please select your province">
+                            <f:selectItem itemValue="12" itemLabel="Select a province..." noSelectionOption ="true"/>
+                            <f:ajax listener="#{distContrl.loadedDistricts()}" render="district_selection"/>
+                            <f:selectItems value="#{provContrl.allProvinces}" var="location" itemValue="#{location.provinceID}" itemLabel="#{location.provinceName}"/>
+                        </h:selectOneMenu>
+                    <h:message for="province_selection" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Districts:"/></td>
+                    <td><h:selectOneMenu id="district_selection" value="#{sectContrl.subDistrictId}"
+                                         required="true"
+                                         requiredMessage="Please select your district">
+                            <f:selectItem itemValue="12" itemLabel="Select a district..." noSelectionOption ="true"/>
+                            <f:ajax listener="#{sectContrl.loadedSectors()}" render="sector_selection" />
+                            <f:selectItems value="#{distContrl.districtNames}" var="loc" itemValue="#{loc.districtID}" itemLabel="#{loc.districtName}"/>                          
+                        </h:selectOneMenu>
+                     <h:message for="district_selection" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Sectors:"/></td>
+                    <td> <h:selectOneMenu id="sector_selection" value="#{usrContrl.users.address}"
+                                          required="true"
+                                         requiredMessage="Please select your sector">
+                            <f:selectItem itemValue="12" itemLabel="Select a Sector..." noSelectionOption ="true"/>                
+                            <f:selectItems value="#{sectContrl.sectorNames}" var="sec" itemValue="#{sec.sectorID}" itemLabel="#{sec.sectorName}"/>                          
+                        </h:selectOneMenu> 
+                     <h:message for="sector_selection" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Email:"/></td>
+                    <td> <h:inputText id="email" value="#{usrContrl.users.email}"
+                                      required="true"
+                                      requiredMessage="Please enter your email address"
+                                      validatorMessage="Invalid email format">                            
+                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                        </h:inputText></td>
+                     <h:message for="email" style="color: red"/>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Phone Number:"/></td>
+                    <td> <h:inputText id="phonenumber" value="#{usrContrl.users.phoneNumber}"
+                                      required="true"
+                                      requiredMessage="Invalid Phone Number"
+                                      >
+                          <f:validateRegex pattern="\d{10}"/>
+                        </h:inputText>
+                    <h:message for="phonenumber" style="color: red"/>
+                    </td> 
+                </tr>
+                <tr>
+                   <td> <h:outputLabel value="UserName:"/></td>
+                   <td> <h:inputText id="username" value="#{usrContrl.users.username}"
+                                     required="true"
+                                     requiredMessage="Username is required"/> 
+                   <h:message for="username" style="color: red"/>
+                   </td> 
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Password:"/></td>
+                    <td> <h:inputSecret id="password" value="#{usrContrl.users.password}" 
+                                        required="true"
+                                        requiredMessage="Password is required"
+                                        validatorMessage="Password should be from 6 characters">
+                    <f:validateLength minimum="6"/> 
+                        </h:inputSecret>
+                    <h:message for="password" style="color: red"/>
+                    </td>          
+                </tr>           
+                <tr>
+                    <td> </td>
+                    <td><h:commandButton value="Update Account"
+                                         action="#{usrContrl.save()}"/></td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Create Account</title>
+    </h:head>
+    <h:body>
+        <h:form id="user_form">
+            <table>         
+
+                <tr>
+                    <td> <h:outputLabel value="First Name:"/> </td>
+                    <td> <h:inputText id="fname" value="#{usrContrl.users.firstName}" 
+                                      required="true"
+                                      requiredMessage="First Name is required"/> 
+                        <h:message for="fname" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Last Name:"/></td>
+                    <td> <h:inputText id="lname" value="#{usrContrl.users.lastName}"
+                                      required="true"
+                                      requiredMessage="Last Name is required"/> 
+                    <h:message for="lname" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Address: "/></td>
+                    <td> <h:selectOneMenu id="province_selection" value="#{distContrl.subProvinceId}"
+                                          required="true"
+                                          requiredMessage="Please select your province">
+                            <f:selectItem itemLabel="Select a province..." />
+                            <f:ajax listener="#{distContrl.loadedDistricts()}" render="district_selection" /> 
+                            <f:selectItems value="#{provContrl.allProvinces}" var="province" itemValue="#{province.provinceID}" itemLabel="#{province.provinceName}"/>
+                        </h:selectOneMenu>
+                     <h:message for="province_selection" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Districts:"/></td>
+                    <td><h:selectOneMenu id="district_selection" value="#{sectContrl.subDistrictId}"
+                                         required="true"  
+                                         requiredMessage="Please select your district">                                         
+                            <f:selectItem itemLabel="Select a district..."/>
+                            <f:ajax listener="#{sectContrl.loadedSectors()}" render="sector_selection"/>
+                            <f:selectItems value="#{distContrl.districtNames}" var="district" itemValue="#{district.districtID}" itemLabel="#{district.districtName}"/>                          
+                        </h:selectOneMenu>
+                     <h:message for="district_selection" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Sectors:"/></td>
+                    <td> <h:selectOneMenu id="sector_selection" value="#{usrContrl.users.address}"
+                                         required="true"
+                                         requiredMessage="Please select your sector">
+                            <f:selectItem itemLabel="Select a Sector..." />    
+                            <f:ajax listener="#{sectContrl.loadedSectors()}"/>
+                            <f:selectItems value="#{sectContrl.sectorNames}" var="sector" itemValue="#{sector.sectorID}" itemLabel="#{sector.sectorName}"/>                          
+                      
+                        </h:selectOneMenu> 
+                     <h:message for="sector_selection" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Email:"/></td>
+                    <td> <h:inputText id="eml" value="#{usrContrl.users.email}" 
+                                      required="true"
+                                      requiredMessage="Please enter your email address"
+                                      validatorMessage="Invalid email format">                            
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                         </h:inputText>
+                         <h:message for="eml" style="color: red"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Phone Number:"/></td>
+                    <td> <h:inputText id="phone" value="#{usrContrl.users.phoneNumber}" 
+                                      required="true"
+                                      requiredMessage="Phone Number is required"
+                                      validatorMessage="Phone Number should be of 10 digits">
+                        <f:validateRegex pattern="\d{10}"/>
+                        </h:inputText>
+                    <h:message for="phone" style="color: red"/>
+                    </td> 
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="UserName:"/></td>
+                    <td> <h:inputText id="usrname" value="#{usrContrl.users.username}" 
+                                      required="true"
+                                      requiredMessage="Username is required"/>
+                    <h:message for="usrname" style="color: red"/>
+                    </td> 
+                </tr>
+                <tr>
+                    <td> <h:outputLabel value="Password:"/></td>
+                    <td> <h:inputSecret id="pswd" value="#{usrContrl.users.password}" 
+                                        required="true"
+                                        requiredMessage="Password is required"
+                                        validatorMessage="Password should be from 6 characters">                            
+                            <f:validateLength minimum="6"/>                            
+                        </h:inputSecret>
+                    <h:message for="pswd" style="color: red"/>
+                    </td>          
+                </tr> 
+                <tr>
+                    <td> </td>
+                    <td><h:commandButton value="Create Account"
+                                         action="#{usrContrl.insert()}"/>
+                        <h:commandButton value="Cancel" 
+                                         action="cancel" immediate="true"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td><h:outputLink  value="login.xhtml">Login</h:outputLink>                   
+                    </td>  
+                </tr>
+            </table>
+        </h:form>
+<!--        <h:outputScript library="js" name="jquery-3.0.0.min.js"/>
+        <h:outputScript library="js" name="script.js"/>-->
+    </h:body>
+</html>
+

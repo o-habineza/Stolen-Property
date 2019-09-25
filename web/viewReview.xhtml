@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>List of identified property to review</title>
+    </h:head>
+    <h:body>
+       <h:form>
+           <h:dataTable value="#{revContrl.rev}" var="rev">
+                <h:column>
+                    <f:facet name="header">ID:</f:facet>
+                    #{rev.identificationID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Property Name:</f:facet>
+                    #{prptsContrl.selectCorrespProp(ident.propertyID).propertyName}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Picture:</f:facet>
+                    <h:graphicImage height="50"  width="50" value="DisplayImage?Image_id=#{ident.propertyID}">
+                        <f:param name="pid" value="#{ident.propertyID}" />
+                    </h:graphicImage>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Description:</f:facet>
+                    #{prptsContrl.selectCorrespProp(ident.propertyID).propertyDescription}
+                </h:column>
+               
+                <h:column>
+                    <f:facet name="header">Evidences:</f:facet>
+                    #{ident.description} 
+                </h:column>
+
+                <h:column> 
+                    <f:facet name="header">Actions:</f:facet>
+
+                 <h:commandLink value="Approve"
+                                action="#{revContrl.approve(ident.identificationID)}"/> 
+
+                &nbsp;&nbsp;
+                 <h:commandLink value="Reject"
+                                     action="#{revContrl.reject(ident.identificationID)}"/> 
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

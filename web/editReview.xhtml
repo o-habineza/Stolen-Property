@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>All available Reviews</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h:dataTable value="#{revContrl.rev}" var="rev">
+                <h:column>
+                    <f:facet name="header">Picture</f:facet>
+                    <h:graphicImage height="50"  width="50" value="DisplayImage?Image_id=#{revContrl.selectCorrespIdentificationID(rev.identificationID).propertyID}">
+                        <f:param name="pid" value="#{revContrl.selectCorrespIdentificationID(rev.identificationID).propertyID}" />
+                    </h:graphicImage>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Item name:</f:facet>
+                        #{prptsContrl.selectCorrespProp(revContrl.selectCorrespIdentificationID(rev.identificationID).propertyID).propertyName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Item Description:</f:facet>
+                        #{prptsContrl.selectCorrespProp(revContrl.selectCorrespIdentificationID(rev.identificationID).propertyID).propertyDescription}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Review Date:</f:facet>
+                        #{rev.reviewDate}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Status:</f:facet>
+                        #{rev.reviewStatus}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Property Id:</f:facet>
+                        #{revContrl.selectCorrespIdentificationID(rev.identificationID).propertyID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">User:</f:facet>
+                        #{revContrl.selectCorrespUser(rev.userID).firstName} #{revContrl.selectCorrespUser(rev.userID).lastName}
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
